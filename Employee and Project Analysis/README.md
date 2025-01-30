@@ -15,11 +15,17 @@ LIMIT 5;
 SELECT * 
 FROM projects
 LIMIT 5;
-
+```
 
 
 ### 2. **Employees Without a Project**
 - Identify employees who are not currently assigned to any project.
+
+```
+SELECT first_name, last_name
+FROM employees
+WHERE current_project IS NULL;
+```
 
 ### 3. **Unassigned Projects**
 - List projects that do not have any employees assigned to them.
