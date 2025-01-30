@@ -21,7 +21,7 @@ LIMIT 5;
 ### 2. **Employees Without a Project**
 - Identify employees who are not currently assigned to any project.
 
-```
+```sql
 SELECT first_name, last_name
 FROM employees
 WHERE current_project IS NULL;
