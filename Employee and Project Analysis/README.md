@@ -11,7 +11,10 @@ This project involves SQL queries to analyze employee data and project assignmen
 SELECT * 
 FROM employees
 LIMIT 5;
-```
+
+SELECT * 
+FROM projects
+LIMIT 5;
 
 
 
