@@ -7,6 +7,14 @@ This project involves SQL queries to analyze employee data and project assignmen
 ### 1. **Basic Data Exploration**
 - Retrieve the first five records from the `employees` and `projects` tables.
 
+```sql
+SELECT * 
+FROM employees
+LIMIT 5;
+```
+
+
+
 ### 2. **Employees Without a Project**
 - Identify employees who are not currently assigned to any project.
 
