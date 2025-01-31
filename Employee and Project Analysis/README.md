@@ -11,6 +11,7 @@ This project involves SQL queries to analyze employee data and project assignmen
 SELECT * 
 FROM employees
 LIMIT 5;
+```
 
 | employee_id | first_name | last_name | location | position  | personality | current_project |
 |------------|------------|-----------|----------|-----------|-------------|----------------|
@@ -22,10 +23,11 @@ LIMIT 5;
 
 
 
-
+```sql
 SELECT * 
 FROM projects
 LIMIT 5;
+```
 
 | project_id | project_name  | start_date  | end_date    |
 |------------|--------------|------------|------------|
@@ -37,11 +39,6 @@ LIMIT 5;
 
 
 
-
-
-```
-
-
 ### 2. **Employees Without a Project**
 - Identify employees who are not currently assigned to any project.
 
@@ -50,6 +47,8 @@ SELECT first_name, last_name
 FROM employees
 WHERE current_project IS NULL;
 ```
+
+
 
 ### 3. **Unassigned Projects**
 - List projects that do not have any employees assigned to them.
@@ -64,6 +63,12 @@ WHERE project_id NOT IN (
 );
 ```
 
+| project_id | project_name       |
+|------------|-------------------|
+| 8          | CycleScenes       |
+| 9      
+
+
 ### 4. **Most Popular Project**
 - Determine the project with the highest number of employees.
 
@@ -76,6 +81,10 @@ GROUP BY p.project_name
 ORDER BY COUNT(*) DESC
 LIMIT 1;
 ```
+| project_name | count(*) |
+|-------------|---------|
+| FistsOfFury | 5       |
+
 
 ### 5. **Projects with More Than One Employee**
 - Retrieve projects that have more than one employee assigned.
@@ -90,8 +99,15 @@ HAVING COUNT(e.current_project) > 1
 ORDER BY COUNT(*) DESC;
 ```
 
+| project_name  |
+|--------------|
+| FistsOfFury  |
+| RocketRush   |
+| ExtremeJets  |
+
+
 ### 6. **Developer Count Calculation**
-- Compute a count based on the number of developers assigned to projects.
+- Each project needs two developers, this query computes a count that tells us how many open developer spots there are based on the number of developers currently assigned to projects.
 
 ```sql
 SELECT (COUNT(*) * 2) - (
@@ -102,6 +118,12 @@ SELECT (COUNT(*) * 2) - (
 ) AS 'Count'
 FROM projects;
 ```
+
+| Count |
+|-------|
+| 17    |
+
+
 
 ### 7. **Most Common Personality Type**
 - Find the most frequent personality type among employees.
@@ -114,8 +136,14 @@ ORDER BY COUNT(personality) DESC
 LIMIT 1;
 ```
 
+| personality |
+|-------------|
+| ENFJ        |
+
+
+
 ### 8. **Most Popular Personality Type in a Project**
-- Identify the most common personality type assigned to a project.
+- Identifies the project assigned to people with the most common personality type
 
 ```sql
 SELECT project_name
@@ -130,9 +158,17 @@ WHERE personality = (
 );
 ```
 
-### 9. **Employees Working on the Most Common Personality-Type Project**
-- List employees working on a project where the dominant personality type is the most common in the dataset.
+| project_name  |
+|---------------|
+| RocketRush    |
+| BravoBoxing   |
+| AlienInvasion |
 
+
+
+### 9. **Employees Working on the Most Common Personality-Type Project**
+- This query retrieves information about employees who are assigned to a project and share the most common personality type among all employees currently assigned to a project.
+  
 ```sql
 SELECT e.first_name, e.last_name, e.personality, p.project_name
 FROM employees e 
@@ -146,9 +182,17 @@ WHERE personality = (
   LIMIT 1
 ```
 
+| First Name | Last Name | Personality | Project Name  |
+|------------|-----------|-------------|---------------|
+| Shannan    | Arlow     | ISTJ        | RocketRush    |
+| Mirella    | Parram    | ISTJ        | MMA2K         |
+| Lacy       | Escritt   | ISTJ        | FistsOfFury   |
+
+
+
 
 ### 10. **Personality Compatibility Analysis**
-- Analyze how many employees have personality types considered "incompatible" based on predefined personality match criteria.
+- This query calculates the number of employees each person is considered 'incompatible' with based on their Myers-Briggs personality type, according to predefined compatibility criteria.
 
 
 ```sql
@@ -207,6 +251,16 @@ END AS 'INCOMPATIBLE'
 FROM employees e
 JOIN projects p ON e.current_project = p.project_id;
 ```
+
+| first_name | last_name      | personality | project_name  | INCOMPATIBLE |
+|------------|----------------|-------------|---------------|--------------|
+| Shannan    | Arlow          | ISTJ        | RocketRush    | 15           |
+| Philippe   | Fownes         | ENFJ        | RocketRush    | 20           |
+| Kalie      | Yearsley       | ESTJ        | RocketRush    | 15           |
+| Hannis     | Galea          | ESTJ        | ZombieStorm   | 15           |
+| Mirella    | Parram         | ISTJ        | MMA2K         | 15           |
+| Delphinia  | Ferrant        | ENFP        | ExtremeJets   | 25           |
+| Ingeborg   | Prickett       | ENFJ        | BravoBoxing   | 20      
 
 
 
