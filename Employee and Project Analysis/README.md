@@ -12,9 +12,33 @@ SELECT *
 FROM employees
 LIMIT 5;
 
+| employee_id | first_name | last_name | location | position  | personality | current_project |
+|------------|------------|-----------|----------|-----------|-------------|----------------|
+| 1          | Shannan    | Arlow     | MO       | Designer  | ISTJ        | 2              |
+| 2          | Philippe   | Fownes    | NY       | Designer  | ENFJ        | 2              |
+| 3          | Ambrosi    | Dawkes    | TX       | Designer  | ISTP        | NULL           |
+| 4          | Mordy      | Mosdall   | FL       | Developer | ISTP        | NULL           |
+| 5          | Kalie      | Yearsley  | IL       | Developer | ESTJ        | 2              |
+
+
+
+
 SELECT * 
 FROM projects
 LIMIT 5;
+
+| project_id | project_name  | start_date  | end_date    |
+|------------|--------------|------------|------------|
+| 1          | AlienInvasion | 2021-01-09 | 2022-06-30 |
+| 2          | RocketRush    | 2021-01-26 | 2022-12-14 |
+| 3          | ZombieStorm   | 2021-05-08 | 2022-10-02 |
+| 4          | BravoBoxing   | 2021-06-21 | 2022-07-10 |
+| 5          | ExtremeJets   | 2021-05-20 | 2022-04-07 |
+
+
+
+
+
 ```
 
 
