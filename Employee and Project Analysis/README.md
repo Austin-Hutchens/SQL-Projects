@@ -271,7 +271,7 @@ JOIN projects p ON e.current_project = p.project_id;
 
 ## Technologies Used
 - SQL (Standard ANSI SQL)
-- Relational Database (e.g., PostgreSQL, MySQL, SQLite)
+- Relational Database ( MySQL, SQLite)
 
 ## How to Use
 1. Run the provided SQL queries in your preferred database system.
